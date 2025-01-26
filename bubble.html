@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble</title>
+
+    <style>
+        ul{
+            border: 2px solid red;
+        }
+        #item-2{
+            border: 2px solid blue;
+        }
+        section{
+            border: 2px solid green;
+        }
+        body{
+            border: 2px solid yellow;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1>Exploring event Bubble!</h1>
+
+    <section id="section-item">
+        <ul id="ul-item">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Ducimus, quam.</li>
+            <li id="item-3">Molestiae, quo.</li>
+            <li id="item-4">Repellat, reprehenderit.</li>
+            <li id="item-5">Neque, ullam.</li>
+        </ul>
+    </section>
+
+    <script>
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 clicked");
+            event.stopImmediatePropagation();
+        })
+        document.getElementById('ul-item').addEventListener('click', function(event){
+            console.log("ul-item clicked");
+            event.stopImmediatePropagation();
+        })
+        document.getElementById('section-item').addEventListener('click', function(event){
+            console.log("Section clicked");
+            event.stopImmediatePropagation();
+        })
+        document.getElementById('body').addEventListener('click', function(event){
+            console.log("Body clicked");
+            event.stopImmediatePropagation();
+        })
+    </script>
+</body>
+</html>
